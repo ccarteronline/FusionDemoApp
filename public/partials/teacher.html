@@ -1,0 +1,38 @@
+<div class="TeacherContent" ng-controller="TeacherCtrl as vm">
+    <md-toolbar class="md-warn">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">Teacher</h2>
+        </div>
+    </md-toolbar>
+    <md-content flex layout-padding>
+        <div ng-show="teacher">
+            <h1>
+                Edit Teacher
+            </h1>
+            <input type="text" name="name" value="Name" ng-model="teacher.name">
+            <h1>
+                Edit Classes and Courses
+            </h1>
+            <ul ng-repeat="class in teacher.classes">
+                <li>
+                    <input type="text" name="name" value="{{class.name}}">
+                    <md-button class="md-warn md-raised">Delete</md-button>
+                    <h1 class="md-title">Teaching Courses</h1>
+                    <ul ng-repeat="course in class.teaching_courses">
+                        <li>{{course.name}}</li>
+                    </ul>
+                    <h1 class="md-title">Students</h1>
+                    <ul ng-repeat="student in class.students">
+                        <li>{{student.name}}</li>
+                    </ul>
+                </li>
+            </ul>
+            <md-button class="md-primary md-raised">
+                Save
+            </md-button>
+        </div>
+        <div ng-show="!teacher">
+            <i>There is no auther with that id</i>
+        </div>
+    </md-content>
+</div>

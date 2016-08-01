@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="FusionApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Rubric App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <!-- Angular Material style sheet -->
+        <link rel="stylesheet" href="/bower_components/angular-material/angular-material.min.css">
+        <!-- Angular Material requires Angular.js Libraries -->
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="/bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
+        <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="/bower_components/angular-aria/angular-aria.min.js"></script>
+        <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+        <script src="/bower_components/lodash/dist/lodash.js"></script>
+
+        <!-- Angular Material Library -->
+        <script src="/bower_components/angular-material/angular-material.min.js"></script>
+
+        <!-- Your application bootstrap  -->
+        <script src="/js/app.js" charset="utf-8"></script>
+
+        <!-- Controllers -->
+        <script src="/js/controllers/mainCtrl.js" charset="utf-8"></script>
+        <script src="/js/controllers/sideBarCtrl.js" charset="utf-8"></script>
+        <script src="/js/controllers/authorCtrl.js" charset="utf-8"></script>
+        <script src="/js/controllers/teacherCtrl.js" charset="utf-8"></script>
+
+        <!-- Resources -->
+        <script src="/js/services/authorResource.js" charset="utf-8"></script>
+        <script src="/js/services/teacherResource.js" charset="utf-8"></script>
+    </head>
+    <body class="ng-cloak">
+        <div class="MainCtrl" ng-controller="MainCtrl as vm">
+            <!-- Top Tool Bar -->
+            <div class="NavigationBar">
+                <md-toolbar layout="row" layout-align="center end" class="md-sm">
+                    <div class="md-toolbar-tools">
+                        <!-- <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="vm.toggleSideMenu()">
+                          <md-icon md-svg-icon="/img/icons/menu.svg"></md-icon>
+                        </md-button> -->
+                        <span flex>
+                            <a href="/#/">{{vm.appTitle}}</a>
+                        </span>
+                        <md-button
+                            aria-label="Button"
+                            ng-disabled="false"
+                            ng-click="vm.selectButton(btn)"
+                            ng-repeat="btn in vm.navigationButtons">
+                          {{btn}}
+                        </md-button>
+                    </div>
+                </md-toolbar>
+            </div>
+
+            <!-- Main Content that holds content outside of side navigation -->
+            <div class="MainContent" layout="column" layout-align="stretch" flex-offset="10" flex="80">
+                <br>
+                <br>
+                <div ng-view></div>
+            </div>
+
+            <!-- Side Bar content -->
+            <div class="SideBar" layout="column" ng-controller="SideBarCtrl">
+                <md-sidenav
+                    class="md-sidenav-left"
+                    md-component-id="left"
+                    md-is-locked-open="false"
+                    md-disable-backdrop
+                    md-whiteframe-4dp>
+                  <md-toolbar class="md-theme-light">
+                    <h1 class="md-toolbar-tools">{{vm.sidebarTitle}}</h1>
+                  </md-toolbar>
+                  <md-content layout-padding>
+                    <!-- <md-button class="md-primary" hide-gt-md ng-click="vm.toggleSideMenu()">
+                      Close Sidenav Left
+                    </md-button> -->
+                    <!-- <p hide show-gt-md>
+                      This sidenav is locked open on your device. To go back to the default behavior,
+                      narrow your display.
+                    </p> -->
+                    <div class="SideBarContent">
+                        <md-content>
+                            <md-list flex>
+                            <!-- <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader> -->
+                            <md-list-item class="md-3-line" ng-click="showTab(item.type, item.uuid)" ng-repeat="item in vm.sideBarList">
+                                <img ng-src="img/icons/ic_person_24px.svg" class="md-avatar" alt="who?" />
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>{{item.name}}</h3>
+                                    <h4>{{item.type | uppercase}}</h4>
+                                    <!--<p>something else</p> -->
+                                </div>
+                            </md-list-item>
+                            <span ng-show="!vm.sideBarList || vm.sideBarList.length === 0"><i>There are no items here.</i></span>
+                        </md-content>
+                    </div>
+                    <md-button class="md-primary" ng-click="vm.toggleSideMenu()" flex="auto">
+                        Close Sidenav Left
+                    </md-button>
+                  </md-content>
+                </md-sidenav>
+            </div>
+            <!-- End SideBar content -->
+        </div><!-- end MainCtrl Content (wraps app) -->
+    </body>
+</html>

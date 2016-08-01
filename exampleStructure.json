@@ -1,0 +1,55 @@
+{
+  "authors": [
+    {
+      "name": "input",
+      "uuid": "generated",
+      "courses": [
+        {
+          "name": "input",
+          "uuid": "generated",
+          "year": “2016 / input"
+        },
+        {
+          "name": "input",
+          "uuid": "generated",
+          "year": "2016"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "uuid": "generated",
+      "courses": [
+        {
+          "name": "input",
+          "uuid": "generated",
+          "year": "2016"
+        },
+        {
+          "name": "input",
+          "uuid": "generated",
+          "year": "2016"
+        }
+      ]
+    }
+  ],
+  "teachers": [
+    {
+      "name": "input",
+      "uuid": "generated",
+      "classes": [
+        {
+          "name": "input",
+          "uuid": "generated",
+          "teaching_courses": ["uuid1", "uuid2"],
+          "students": [
+            {
+              "name": "input",
+              "uuid": "generated"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
