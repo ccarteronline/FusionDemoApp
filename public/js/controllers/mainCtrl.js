@@ -5,24 +5,33 @@
 
         function MainCtrl ($scope, $mdSidenav, $log, $location, AuthorResource, TeacherResource) {
             var vm = this;
+            var defaultSideBarTitle = 'Side Bar';
             vm.appTitle = 'Fusion Demo App';
             vm.toggleSideMenu = buildToggler('left');
-            vm.sidebarTitle = 'Side Bar';
+            vm.sidebarTitle = defaultSideBarTitle;
             vm.navigationButtons = ['Authors', 'Teachers', 'JSON'];
             vm.sideBarList = [];
-            // Later, get this from DB or local storage
-            vm.selectButton = function (btnName) {
+
+            // When navigation button selected, handle what happens
+            vm.selectButton = function (btnName, isCollapsed) {
                 vm.sidebarTitle = btnName;
                 if (btnName === 'Authors') {
+                    if (!isCollapsed) {
+                        vm.toggleSideMenu();
+                    }
                     vm.sideBarList = AuthorResource.getJSON();
-                    vm.toggleSideMenu();
                 } else if (btnName === 'Teachers') {
+                    if (!isCollapsed) {
+                        vm.toggleSideMenu();
+                    }
                     vm.sideBarList = TeacherResource.getJSON();
-                    vm.toggleSideMenu();
                 } else if (btnName === 'JSON') {
-                    $location.url('/json');
-                } else {
+                    if (isCollapsed) {
+                        vm.toggleSideMenu();
+                    }
+                    vm.sidebarTitle = defaultSideBarTitle;
                     vm.sideBarList = [];
+                    $location.url('/json');
                 }
             };
 

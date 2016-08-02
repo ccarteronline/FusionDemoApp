@@ -38,18 +38,23 @@
             <div class="NavigationBar">
                 <md-toolbar layout="row" layout-align="center end" class="md-sm">
                     <div class="md-toolbar-tools">
-                        <!-- <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="vm.toggleSideMenu()">
-                          <md-icon md-svg-icon="/img/icons/menu.svg"></md-icon>
-                        </md-button> -->
                         <span flex>
                             <a href="/#/">{{vm.appTitle}}</a>
                         </span>
                         <md-button
-                            aria-label="Button"
+                            class="navButtons"
+                            aria-label="Navigation Button"
                             ng-disabled="false"
-                            ng-click="vm.selectButton(btn)"
+                            ng-click="vm.selectButton(btn, false)"
                             ng-repeat="btn in vm.navigationButtons">
-                          {{btn}}
+                                {{btn}}
+                        </md-button>
+                        <md-button
+                            class="md-icon-button hamburgerButton"
+                            aria-label="Side Bar"
+                            ng-disabled="false"
+                            ng-click="vm.toggleSideMenu()">
+                                <md-icon md-svg-icon="/img/icons/menu.svg"></md-icon>
                         </md-button>
                     </div>
                 </md-toolbar>
@@ -82,23 +87,45 @@
                       narrow your display.
                     </p> -->
                     <div class="SideBarContent">
+                        <div class="miniLinks">
+                            <md-list-item ng-repeat="btn in vm.navigationButtons">
+                                <md-button
+                                    class="md-primary md-raised"
+                                    aria-label="SideBar Buttons"
+                                    ng-click="vm.selectButton(btn, true)"
+                                    flex="auto">
+                                        {{btn}}
+                                </md-button>
+                            </md-list-item>
+                        </div>
+
                         <md-content>
                             <md-list flex>
-                            <!-- <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader> -->
-                            <md-list-item class="md-3-line" ng-click="showTab(item.type, item.uuid)" ng-repeat="item in vm.sideBarList">
-                                <img ng-src="img/icons/ic_person_24px.svg" class="md-avatar" alt="who?" />
-                                <div class="md-list-item-text" layout="column">
-                                    <h3>{{item.name}}</h3>
-                                    <h4>{{item.type | uppercase}}</h4>
-                                    <!--<p>something else</p> -->
-                                </div>
+                            <md-subheader class="md-no-sticky">Showing: {{vm.sidebarTitle}}</md-subheader>
+                            <md-list-item
+                                class="md-3-line"
+                                ng-click="showTab(item.type, item.uuid)"
+                                ng-repeat="item in vm.sideBarList">
+                                    <img ng-src="img/icons/ic_person_24px.svg" class="md-avatar" alt="who?" />
+                                    <div class="md-list-item-text" layout="column">
+                                        <h3>{{item.name}}</h3>
+                                        <h4>{{item.type | uppercase}}</h4>
+                                        <!--<p>something else</p> -->
+                                    </div>
                             </md-list-item>
                             <span ng-show="!vm.sideBarList || vm.sideBarList.length === 0"><i>There are no items here.</i></span>
                         </md-content>
                     </div>
-                    <md-button class="md-primary" ng-click="vm.toggleSideMenu()" flex="auto">
-                        Close Sidenav Left
-                    </md-button>
+                    <md-list-item>
+                        <md-button
+                            class="md-primary md-raised"
+                            aria-label="Close Sidebar"
+                            ng-click="vm.toggleSideMenu()"
+                            flex="auto">
+                                Close Sidebar
+                        </md-button>
+                    </md-list-item>
+
                   </md-content>
                 </md-sidenav>
             </div>

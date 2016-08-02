@@ -33,4 +33,7 @@ $ gulp watch
 ```
 
 ### Changes
--Click JSON tab to change or modify data. Output JSON structure of application. Remove elements that have delete next to them.
+
+  - Edited CSS for mobile responsiveness
+  - Added links to left side bar for media queries
+  - Added dialog to confirm JSON structure was updated

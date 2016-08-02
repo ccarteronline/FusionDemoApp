@@ -3,3 +3,24 @@
     width: 100%;
     height: 400px;
 }
+
+/* hide the hamburger button and side nav links until appropriate size */
+.hamburgerButton {
+    display: none;
+}
+.miniLinks {
+    display: none;
+}
+
+/* media queries for screen size adjustment */
+@media (max-width: 600px)  {
+    .navButtons {
+        display: none;
+    }
+    .hamburgerButton {
+        display: block;
+    }
+    .miniLinks {
+        display: block;
+    }
+}

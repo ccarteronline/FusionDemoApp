@@ -17,7 +17,10 @@
                 <li>
                     <input type="text" name="name" ng-model="course.name">
                     <input type="text" name="name" ng-model="course.year">
-                    <md-button class="md-warn md-raised" ng-click="vm.removeCourse($index)">Delete</md-button>
+                    <md-button
+                        aria-label="Delete"
+                        class="md-warn md-raised"
+                        ng-click="vm.removeCourse($index)">Delete</md-button>
                 </li>
             </ul>
             <!-- <md-button class="md-primary md-raised" disabled="true">
