@@ -1,0 +1,5 @@
+/* force text area to have plain styling */
+.jsonTextArea {
+    width: 100%;
+    height: 400px;
+}

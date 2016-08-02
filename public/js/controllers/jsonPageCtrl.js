@@ -3,13 +3,17 @@
     FusionApp
         .controller('JsonPageCtrl', JsonPageCtrl);
 
-        function JsonPageCtrl ($scope, $mdSidenav, $log, $location) {
+        function JsonPageCtrl ($scope, $mdSidenav, $log, $location, TeacherResource, AuthorResource) {
             var vm = this;
-            var testJsonObject = {
-                id: "id",
-                name: "Nomonus, Matasdonus"
+            var preparedJsonOutput = {
+                "authors": AuthorResource.getJSON(),
+                "teachers": TeacherResource.getJSON()
             };
-            vm.json_output = JSON.stringify(testJsonObject, null, "    ");
-            console.log(vm.json_output);
+            vm.json_output = angular.toJson(preparedJsonOutput, true);
+            vm.replaceJsonData = function replaceJsonData() {
+                vm.newJson = JSON.parse(vm.json_output);
+                AuthorResource.setJSON(vm.newJson.authors);
+                TeacherResource.setJSON(vm.newJson.teachers);
+            }
         }
 })();

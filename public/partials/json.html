@@ -6,15 +6,12 @@
     </md-toolbar>
     <md-content flex layout-padding>
         <div layout="row" layout-padding layout-wrap layout-fill ng-cloak>
-            <md-whiteframe flex-sm="100" flex-gt-sm="50" flex-gt-md="50" layout layout-align="center center">
-                <md-input-container flex>
-                  <label>JSON</label>
-                  <textarea ng-model="vm.json_output"></textarea>
-                </md-input-container>
+            <md-whiteframe class="md-whiteframe-1dp" flex-sm="100" flex-gt-sm="100" flex-gt-md="100" layout layout-align="center center">
+                  <textarea ng-model="vm.json_output" class="jsonTextArea"></textarea>
             </md-whiteframe>
-            <md-whiteframe flex-sm="100" flex-gt-sm="50" flex-gt-md="50" layout layout-align="center center">
-                <md-button class="md-primary md-raised" ng-click="vm.toggleSideMenu()" flex="auto">
-                    SAVE JSON
+            <md-whiteframe class="md-whiteframe-1dp" flex-sm="100" flex-gt-sm="100" flex-gt-md="100" layout layout-align="center center">
+                <md-button class="md-primary md-raised" ng-click="vm.replaceJsonData()" flex="auto">
+                    Apply JSON to App
                 </md-button>
 
             </md-whiteframe>

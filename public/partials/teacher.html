@@ -15,8 +15,8 @@
             </h1>
             <ul ng-repeat="class in teacher.classes">
                 <li>
-                    <input type="text" name="name" value="{{class.name}}">
-                    <md-button class="md-warn md-raised">Delete</md-button>
+                    <input type="text" name="name" ng-model="class.name">
+                    <md-button class="md-warn md-raised" ng-click="vm.removeClass($index)">Delete</md-button>
                     <h1 class="md-title">Teaching Courses</h1>
                     <ul ng-repeat="course in class.teaching_courses">
                         <li>{{course.name}}</li>
@@ -27,12 +27,12 @@
                     </ul>
                 </li>
             </ul>
-            <md-button class="md-primary md-raised">
+            <!-- <md-button class="md-primary md-raised">
                 Save
-            </md-button>
+            </md-button> -->
         </div>
         <div ng-show="!teacher">
-            <i>There is no auther with that id</i>
+            <i>There is no teacher with that id</i>
         </div>
     </md-content>
 </div>

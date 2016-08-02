@@ -15,14 +15,14 @@
             </h1>
             <ul ng-repeat="course in author.courses">
                 <li>
-                    <input type="text" name="name" value="{{course.name}}">
-                    <input type="text" name="name" value="{{course.year}}">
-                    <md-button class="md-warn md-raised">Delete</md-button>
+                    <input type="text" name="name" ng-model="course.name">
+                    <input type="text" name="name" ng-model="course.year">
+                    <md-button class="md-warn md-raised" ng-click="vm.removeCourse($index)">Delete</md-button>
                 </li>
             </ul>
-            <md-button class="md-primary md-raised">
+            <!-- <md-button class="md-primary md-raised" disabled="true">
                 Save
-            </md-button>
+            </md-button> -->
         </div>
         <div ng-show="!author">
             <i>There is no auther with that id</i>

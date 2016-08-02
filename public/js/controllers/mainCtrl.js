@@ -11,15 +11,13 @@
             vm.navigationButtons = ['Authors', 'Teachers', 'JSON'];
             vm.sideBarList = [];
             // Later, get this from DB or local storage
-            vm.authorsList = AuthorResource;
-            vm.teachersList = TeacherResource;
             vm.selectButton = function (btnName) {
                 vm.sidebarTitle = btnName;
                 if (btnName === 'Authors') {
-                    vm.sideBarList = vm.authorsList;
+                    vm.sideBarList = AuthorResource.getJSON();
                     vm.toggleSideMenu();
                 } else if (btnName === 'Teachers') {
-                    vm.sideBarList = vm.teachersList;
+                    vm.sideBarList = TeacherResource.getJSON();
                     vm.toggleSideMenu();
                 } else if (btnName === 'JSON') {
                     $location.url('/json');
