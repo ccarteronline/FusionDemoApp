@@ -33,4 +33,4 @@ $ gulp watch
 ```
 
 ### Changes
-Display listed JSON items from array. Add resources and HTML for view. Later possible DB hook up. Later, finishing UI elements around
+-Click JSON tab to change or modify data. Output JSON structure of application. Remove elements that have delete next to them.
