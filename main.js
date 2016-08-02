@@ -5,7 +5,6 @@ var http = require('http').Server(app);
 var router = express.Router();
 var port = (process.env.PORT || 7803);
 
-
 // Use body parser for json
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

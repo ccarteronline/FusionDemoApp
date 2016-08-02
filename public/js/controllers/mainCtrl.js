@@ -8,22 +8,24 @@
             vm.appTitle = 'Fusion Demo App';
             vm.toggleSideMenu = buildToggler('left');
             vm.sidebarTitle = 'Side Bar';
-            vm.navigationButtons = ['Authors', 'Teachers', 'Courses'];
+            vm.navigationButtons = ['Authors', 'Teachers', 'JSON'];
             vm.sideBarList = [];
             // Later, get this from DB or local storage
             vm.authorsList = AuthorResource;
             vm.teachersList = TeacherResource;
             vm.selectButton = function (btnName) {
-                console.log(btnName);
                 vm.sidebarTitle = btnName;
                 if (btnName === 'Authors') {
                     vm.sideBarList = vm.authorsList;
+                    vm.toggleSideMenu();
                 } else if (btnName === 'Teachers') {
                     vm.sideBarList = vm.teachersList;
+                    vm.toggleSideMenu();
+                } else if (btnName === 'JSON') {
+                    $location.url('/json');
                 } else {
                     vm.sideBarList = [];
                 }
-                vm.toggleSideMenu();
             };
 
             function buildToggler(navID) {

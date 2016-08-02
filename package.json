@@ -1,7 +1,7 @@
 {
-  "name": "test-gulp-app",
+  "name": "fusion-demo-app",
   "version": "1.0.0",
-  "description": "This is a test app used by Gulp for task automation",
+  "description": "Navigate to buttons, select a list item. Display list properties and edit them. Input/Output JSON.",
   "main": "main.js",
   "scripts": {
     "test": "node main.js"

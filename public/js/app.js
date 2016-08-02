@@ -15,4 +15,7 @@ var FusionApp =
                 .when('/teacher' , {
                     templateUrl: '/partials/teacher.html'
                 })
+                .when('/json', {
+                    templateUrl: '/partials/json.html'
+                });
         });

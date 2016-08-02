@@ -1,6 +1,6 @@
 {
-  "name": "test-gulp-app",
-  "description": "This is a test app used by Gulp for task automation",
+  "name": "fusion-demo-app",
+  "description": "Navigate to buttons, select a list item. Display list properties and edit them. Input/Output JSON.",
   "main": "main.js",
   "authors": [
     "Chris Carter"

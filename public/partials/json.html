@@ -1,0 +1,24 @@
+<div class="JsonPageCtrl" ng-controller="JsonPageCtrl as vm">
+    <md-toolbar class="md-warn">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">JSON output/input</h2>
+        </div>
+    </md-toolbar>
+    <md-content flex layout-padding>
+        <div layout="row" layout-padding layout-wrap layout-fill ng-cloak>
+            <md-whiteframe flex-sm="100" flex-gt-sm="50" flex-gt-md="50" layout layout-align="center center">
+                <md-input-container flex>
+                  <label>JSON</label>
+                  <textarea ng-model="vm.json_output"></textarea>
+                </md-input-container>
+            </md-whiteframe>
+            <md-whiteframe flex-sm="100" flex-gt-sm="50" flex-gt-md="50" layout layout-align="center center">
+                <md-button class="md-primary md-raised" ng-click="vm.toggleSideMenu()" flex="auto">
+                    SAVE JSON
+                </md-button>
+
+            </md-whiteframe>
+        </div>
+    </md-content>
+
+</div>
