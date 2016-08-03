@@ -106,7 +106,7 @@
                                 class="md-3-line"
                                 ng-click="showTab(item.type, item.uuid)"
                                 ng-repeat="item in vm.sideBarList">
-                                    <img ng-src="img/icons/ic_person_24px.svg" class="md-avatar" alt="who?" />
+                                    <img ng-src="img/icons/ic_person_24px.svg" class="md-avatar" alt="{{item.name}}" />
                                     <div class="md-list-item-text" layout="column">
                                         <h3>{{item.name}}</h3>
                                         <h4>{{item.type | uppercase}}</h4>
@@ -122,6 +122,7 @@
                             aria-label="Close Sidebar"
                             ng-click="vm.toggleSideMenu()"
                             flex="auto">
+                                <!-- <img ng-src="img/icons/ic_close_24px.svg" alt="close" /> -->
                                 Close Sidebar
                         </md-button>
                     </md-list-item>
