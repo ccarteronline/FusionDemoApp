@@ -1,6 +1,7 @@
 (function () {
     'use strict';
-    FusionApp
+    angular
+        .module('FusionApp')
         .factory('TeacherResource', function TeacherResourceFactory() {
             var default_json_data = [
                 {

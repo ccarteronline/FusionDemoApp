@@ -1,6 +1,7 @@
 (function () {
     'use strict';
-    FusionApp
+    angular
+        .module('FusionApp')
         .controller('MainCtrl', MainCtrl);
 
         function MainCtrl ($scope, $mdSidenav, $log, $location, AuthorResource, TeacherResource) {

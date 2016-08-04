@@ -1,6 +1,7 @@
 (function () {
     'use strict';
-    FusionApp
+    angular
+        .module('FusionApp')
         .controller('SideBarCtrl', SideBarCtrl);
 
         function SideBarCtrl ($scope, $mdSidenav, $log, $location) {

@@ -1,6 +1,7 @@
 (function () {
     'use strict';
-    FusionApp
+    angular
+        .module('FusionApp')
         .controller('TeacherCtrl', TeacherCtrl);
 
         function TeacherCtrl ($scope, $log, $location, TeacherResource) {

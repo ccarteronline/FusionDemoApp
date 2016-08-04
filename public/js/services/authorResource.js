@@ -1,6 +1,7 @@
 (function () {
     'use strict';
-    FusionApp
+    angular
+        .module('FusionApp')
         .factory('AuthorResource', function AuthorResourceFactory() {
             var default_json_data = [
                 {

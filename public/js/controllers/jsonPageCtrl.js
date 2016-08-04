@@ -1,6 +1,7 @@
 (function () {
     'use strict';
-    FusionApp
+    angular
+        .module('FusionApp')
         .controller('JsonPageCtrl', JsonPageCtrl);
 
         function JsonPageCtrl ($scope, $mdDialog, $log, $location, TeacherResource, AuthorResource) {

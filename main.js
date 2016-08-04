@@ -17,6 +17,10 @@ app.use(express.static(__dirname + '/public'));
 //So that bower components can be loaded in from the nested "public" directory
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
+router.get('/test', function (req, res) {
+    res.status(404).json({ error: 'message' });
+});
+
 http.listen(port, function(){
     console.log('listening on: ' + port);
 });

@@ -1,6 +1,7 @@
 (function () {
     'use strict';
-    FusionApp
+    angular
+        .module('FusionApp')
         .controller('AuthorCtrl', AuthorCtrl);
 
         function AuthorCtrl ($scope, $log, $location, AuthorResource) {

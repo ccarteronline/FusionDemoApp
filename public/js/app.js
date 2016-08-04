@@ -1,11 +1,11 @@
-'use strict';
-var FusionApp =
+(function() {
+    'use strict';
     angular
         .module('FusionApp', ['ngMaterial', 'ngMessages', 'ngRoute'])
         .run(function ($log) {
             $log.debug('Fusion Demo App is running');
         })
-        .config(function ($routeProvider) {
+        .config(function ($routeProvider, $locationProvider) {
             $routeProvider
                 .when('/', {
                     templateUrl: '/partials/main.html'
@@ -19,4 +19,8 @@ var FusionApp =
                 .when('/json', {
                     templateUrl: '/partials/json.html'
                 });
+
+                $locationProvider.html5Mode(true);
         });
+
+}());
