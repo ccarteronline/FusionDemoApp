@@ -12,6 +12,12 @@
     display: none;
 }
 
+/* Style list for partials */
+.list {
+    list-style: none;
+    float: left;
+}
+
 /* media queries for screen size adjustment */
 @media (max-width: 600px)  {
     .navButtons {

@@ -5,39 +5,89 @@
         </div>
     </md-toolbar>
     <md-content flex layout-padding>
-        <div ng-show="teacher">
-            <h1>
-                Edit Teacher
-            </h1>
+        <md-input-container class="md-block">
+            <label>Teacher's Name</label>
             <input type="text" name="name" value="Name" ng-model="teacher.name">
-            <h1>
-                Edit Classes and Courses
-            </h1>
-            <ul ng-repeat="class in teacher.classes">
-                <li>
+        </md-input-container>
+    </md-content>
+    <md-toolbar class="md-warn">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">Edit Classes and Courses</h2>
+        </div>
+    </md-toolbar>
+    <md-content flex layout-padding>
+        <ul class="list" layout="column" layout-padding layout-fill>
+            <li ng-repeat="class in teacher.classes">
+                <md-input-container>
+                    <label>Class Name</label>
                     <input type="text" name="name" ng-model="class.name">
-                    <md-button
-                        aria-label="Delete"
-                        class="md-warn md-raised"
-                        ng-click="vm.removeClass($index)">
-                            Delete
-                    </md-button>
+                </md-input-container>
+                <md-content>
                     <h1 class="md-title">Teaching Courses</h1>
-                    <ul ng-repeat="course in class.teaching_courses">
-                        <li>{{course.name}}</li>
+                    <ul class="list" layout="column" layout-padding layout-fill>
+                        <li ng-repeat="course in class.teaching_courses">
+                            <md-input-container layout-fill>
+                                <label>Course Name</label>
+                                <input type="text" name="name" ng-model="course.name">
+                                <md-button
+                                    aria-label="Delete Course"
+                                    class="md-primary md-raised"
+                                    ng-click="vm.removeCourse($parent.$index, $index)">
+                                        Remove
+                                </md-button>
+                            </md-input-container>
+                        </li>
                     </ul>
+                    <md-input-container>
+                        <label>Add a course</label>
+                        <input type="text" name="name" ng-model="teacher.newCourseName">
+                        <md-button
+                            aria-label="Add a Course"
+                            class="md-primary md-raised"
+                            ng-click="vm.addCourse($index)">
+                                Add
+                        </md-button>
+                    </md-input-container>
+                </md-content>
+
+                <md-content>
                     <h1 class="md-title">Students</h1>
-                    <ul ng-repeat="student in class.students">
-                        <li>{{student.name}}</li>
+                    <ul class="list" layout="column" layout-padding layout-fill>
+                        <li ng-repeat="student in class.students">
+                            <md-input-container layout-fill>
+                                <input type="text" name="name" ng-model="student.name">
+                                <md-button
+                                    aria-label="Remove Student"
+                                    class="md-primary md-raised"
+                                    ng-click="vm.removeStudent($parent.$index, $index)">
+                                        Remove
+                                </md-button>
+                            </md-input-container>
+                        </li>
                     </ul>
-                </li>
-            </ul>
+                    <md-input-container>
+                        <label>Add a Student</label>
+                        <input type="text" name="name" ng-model="teacher.newStudentName">
+                        <md-button
+                            aria-label="Add a Student"
+                            class="md-primary md-raised"
+                            ng-click="vm.addStudent($index)">
+                                Add
+                        </md-button>
+                    </md-input-container>
+                </md-content>
+
+                <md-button
+                    aria-label="Delete"
+                    class="md-warn md-raised"
+                    ng-click="vm.removeClass($index)">
+                        Delete Class and courses
+                </md-button>
+            </li>
+        </ul>
             <!-- <md-button class="md-primary md-raised">
                 Save
             </md-button> -->
-        </div>
-        <div ng-show="!teacher">
-            <i>There is no teacher with that id</i>
         </div>
     </md-content>
 </div>

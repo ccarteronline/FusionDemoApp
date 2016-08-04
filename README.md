@@ -34,6 +34,6 @@ $ gulp watch
 
 ### Changes
 
-  - Edited CSS for mobile responsiveness
-  - Added links to left side bar for media queries
-  - Added dialog to confirm JSON structure was updated
+  - Add items to JSON structure from the view
+  - Remove items from JSON structure from the view
+  - Add Material Design styles to input

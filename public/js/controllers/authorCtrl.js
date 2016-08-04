@@ -15,6 +15,20 @@
 
             vm.removeCourse = function removeCourse(i) {
                 $scope.author.courses.splice(i, 1);
+            };
+
+            vm.addCourse = function addCourse() {
+                // Use ng-submit and required field
+                // Backend can check for empty fields
+                // and validation. Not client side.
+                if (!$scope.newCourseName || !$scope.newCourseYear) {
+                    alert('You cannot enter a blank class');
+                } else {
+                    $scope.author.courses.push({
+                        "name" : $scope.newCourseName,
+                        "year" : $scope.newCourseYear
+                    })
+                }
             }
 
         }

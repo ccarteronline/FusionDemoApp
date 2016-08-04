@@ -1,34 +1,68 @@
 <div class="AuthorContent" ng-controller="AuthorCtrl as vm">
     <md-toolbar class="md-warn">
         <div class="md-toolbar-tools">
-            <h2 class="md-flex">Author</h2>
+            <h2 class="md-flex">Edit Author's Name</h2>
         </div>
     </md-toolbar>
     <md-content flex layout-padding>
-        <div ng-show="author">
-            <h1 class="md-title">
-                Edit Author
-            </h1>
+        <md-input-container class="md-block">
+            <label>Author's Name</label>
             <input type="text" name="name" value="Name" ng-model="author.name">
-            <h1 class="md-title">
-                Edit Courses
-            </h1>
-            <ul ng-repeat="course in author.courses">
-                <li>
+        </md-input-container>
+    </md-content>
+    <md-toolbar class="md-warn">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">Edit Author's Courses</h2>
+        </div>
+    </md-toolbar>
+    <md-content layout-padding>
+        <ul class="list" layout="column" layout-padding layout-fill>
+            <li ng-repeat="course in author.courses">
+                <md-input-container layout-fill>
+                    <label>Edit Course Name</label>
                     <input type="text" name="name" ng-model="course.name">
+                </md-input-container>
+                <md-input-container layout-fill>
+                    <label>Edit Course Year</label>
                     <input type="text" name="name" ng-model="course.year">
-                    <md-button
-                        aria-label="Delete"
-                        class="md-warn md-raised"
-                        ng-click="vm.removeCourse($index)">Delete</md-button>
-                </li>
-            </ul>
+                </md-input-container>
+                <md-button
+                    aria-label="Delete"
+                    class="md-primary md-raised"
+                    ng-click="vm.removeCourse($index)">
+                        Delete Course
+                </md-button>
+                <br>
+                <br>
+            </li>
+        </ul>
+
             <!-- <md-button class="md-primary md-raised" disabled="true">
                 Save
             </md-button> -->
-        </div>
-        <div ng-show="!author">
-            <i>There is no auther with that id</i>
-        </div>
     </md-content>
+    <md-toolbar class="md-warn">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">Add a course</h2>
+        </div>
+    </md-toolbar>
+    <md-content layout-padding>
+        <form>
+            <md-input-container>
+                <label>Add a Course</label>
+                <input type="text" name="name" ng-model="newCourseName" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Add a Year</label>
+                <input type="text" name="name" ng-model="newCourseYear" required>
+            </md-input-container>
+            <md-button
+                aria-label="Delete"
+                class="md-primary md-raised"
+                ng-click="vm.addCourse()">
+                    Add This Course
+            </md-button>
+        </form>
+    </md-content>
+
 </div>
