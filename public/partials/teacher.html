@@ -38,16 +38,21 @@
                             </md-input-container>
                         </li>
                     </ul>
-                    <md-input-container>
-                        <label>Add a course</label>
-                        <input type="text" name="name" ng-model="teacher.newCourseName">
-                        <md-button
-                            aria-label="Add a Course"
-                            class="md-primary md-raised"
-                            ng-click="vm.addCourse($index)">
-                                Add
-                        </md-button>
-                    </md-input-container>
+                    <form>
+                        <md-input-container>
+                            <label>Add a course</label>
+                            <input
+                                type="text"
+                                name="name"
+                                ng-model="teacher.classes[$index].teaching_courses.name">
+                            <md-button
+                                aria-label="Add a Course"
+                                class="md-primary md-raised"
+                                ng-click="vm.addCourse($index)">
+                                    Add
+                            </md-button>
+                        </md-input-container>
+                    </form>
                 </md-content>
 
                 <md-content>
@@ -65,16 +70,21 @@
                             </md-input-container>
                         </li>
                     </ul>
-                    <md-input-container>
-                        <label>Add a Student</label>
-                        <input type="text" name="name" ng-model="teacher.newStudentName">
-                        <md-button
-                            aria-label="Add a Student"
-                            class="md-primary md-raised"
-                            ng-click="vm.addStudent($index)">
-                                Add
-                        </md-button>
-                    </md-input-container>
+                    <form>
+                        <md-input-container>
+                            <label>Add a Student</label>
+                            <input
+                                type="text"
+                                name="name"
+                                ng-model="teacher.classes[$index].students.name">
+                            <md-button
+                                aria-label="Add a Student"
+                                class="md-primary md-raised"
+                                ng-click="vm.addStudent($index)">
+                                    Add
+                            </md-button>
+                        </md-input-container>
+                    </form>
                 </md-content>
 
                 <md-button

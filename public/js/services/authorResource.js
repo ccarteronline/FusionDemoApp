@@ -56,13 +56,17 @@
                 }
             ];
 
+            function getJSON() {
+                return default_json_data;
+            };
+
+            function setJSON(newJson) {
+                default_json_data = newJson;
+            };
+
             return {
-                getJSON: function getJSON() {
-                    return default_json_data;
-                },
-                setJSON: function setJSON(newJson) {
-                    default_json_data = newJson;
-                }
+                getJSON: getJSON,
+                setJSON: setJSON
             }
         });
 })();
