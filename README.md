@@ -13,13 +13,8 @@ $ bower install
 ```
 
 ### Running
-You need Gulp installed globally:
 ```sh
 $ gulp server
-```
-or without Gulp:
-```sh
-$ nodemon main.js
 ```
 
 ### Testing

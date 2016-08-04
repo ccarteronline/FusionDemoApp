@@ -26,6 +26,6 @@
                 ).finally(function () {
                     $location.url('/');
                 });
-            }
+            };
         }
 })();

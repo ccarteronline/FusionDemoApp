@@ -8,7 +8,7 @@
             var teachers = TeacherResource.getJSON();
             var teacherID = $location.search().uuid;
             var teacherIndex = _.findIndex(teachers, function (o) {
-                return o.uuid == teacherID;
+                return o.uuid === teacherID;
             });
             $scope.teacher = teachers[teacherIndex];
 
@@ -36,7 +36,7 @@
             // Remove a student from a teacher entry
             vm.removeStudent = function removeStudent(parentIndex, itemIndex) {
                 $scope.teacher.classes[parentIndex].students.splice(itemIndex, 1);
-            }
+            };
 
             // Remove an entire teacher entry
             vm.removeClass = function removeClass(i) {

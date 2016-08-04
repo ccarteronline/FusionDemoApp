@@ -1,8 +1,9 @@
+'use strict';
 var FusionApp =
     angular
         .module('FusionApp', ['ngMaterial', 'ngMessages', 'ngRoute'])
         .run(function ($log) {
-            $log.debug('Rubric is running');
+            $log.debug('Fusion Demo App is running');
         })
         .config(function ($routeProvider) {
             $routeProvider

@@ -8,7 +8,7 @@
             var authors = AuthorResource.getJSON();
             var authorID = $location.search().uuid;
             var authorIndex = _.findIndex(authors, function (o) {
-                return o.uuid == authorID;
+                return o.uuid === authorID;
             });
 
             $scope.author = authors[authorIndex];
@@ -27,9 +27,9 @@
                     $scope.author.courses.push({
                         "name" : $scope.newCourseName,
                         "year" : $scope.newCourseYear
-                    })
+                    });
                 }
-            }
+            };
 
         }
 })();

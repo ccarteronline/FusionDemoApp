@@ -1,5 +1,5 @@
 (function () {
-    'use strict'
+    'use strict';
     FusionApp
         .factory('TeacherResource', function TeacherResourceFactory() {
             var default_json_data = [
@@ -85,7 +85,7 @@
 
             function getJSON() {
                 return default_json_data;
-            };
+            }
 
             function setJSON(newJson) {
                 default_json_data = newJson;
@@ -94,6 +94,6 @@
             return {
                 getJSON: getJSON,
                 setJSON: setJSON
-            }
+            };
         });
 })();

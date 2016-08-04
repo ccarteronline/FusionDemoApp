@@ -4,7 +4,7 @@
         .controller('SideBarCtrl', SideBarCtrl);
 
         function SideBarCtrl ($scope, $mdSidenav, $log, $location) {
-            var vm = this;
+            //var vm = this;
             $scope.showTab = function (type, id) {
                 $location.url('/'+type+'/?uuid='+id);
 
@@ -14,6 +14,6 @@
                     .then(function () {
                         $log.debug("toggle " + 'left' + " is done");
                     });
-            }
+            };
         }
 })();
