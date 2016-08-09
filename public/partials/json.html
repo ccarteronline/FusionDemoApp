@@ -9,13 +9,29 @@
             <md-whiteframe class="md-whiteframe-1dp" flex-sm="100" flex-gt-sm="100" flex-gt-md="100" layout>
                   <textarea ng-model="vm.json_output" class="jsonTextArea" cols="100"></textarea>
             </md-whiteframe>
-            <md-whiteframe class="md-whiteframe-1dp" flex-sm="100" flex-gt-sm="100" flex-gt-md="100" layout>
+            <md-whiteframe class="md-whiteframe-1dp" flex-sm="100" flex-gt-sm="100" flex-gt-md="100">
                 <md-button
                     aria-label="Apply JSON to App"
                     class="md-primary md-raised"
                     ng-click="vm.replaceJsonData($event)"
                     flex="auto">
                     Apply JSON to App
+                </md-button>
+
+                <md-button
+                    aria-label="Send to DB"
+                    class="md-primary md-raised"
+                    ng-click="vm.sendToDB()"
+                    flex="auto">
+                    Send to DB
+                </md-button>
+
+                <md-button
+                    aria-label="Apply JSON to App"
+                    class="md-primary md-raised"
+                    ng-click="vm.getFromDB()"
+                    flex="auto">
+                    Get from DB
                 </md-button>
 
             </md-whiteframe>

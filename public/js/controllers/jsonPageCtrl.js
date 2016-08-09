@@ -4,7 +4,7 @@
         .module('FusionApp')
         .controller('JsonPageCtrl', JsonPageCtrl);
 
-        function JsonPageCtrl ($scope, $mdDialog, $log, $location, TeacherResource, AuthorResource) {
+        function JsonPageCtrl ($scope, $mdDialog, $log, $location, TeacherResource, AuthorResource, DatabaseResource) {
             var vm = this;
             var preparedJsonOutput = {
                 "authors": AuthorResource.getJSON(),
@@ -27,6 +27,14 @@
                 ).finally(function () {
                     $location.url('/');
                 });
+            };
+
+            vm.sendToDB = function sendToDB() {
+                DatabaseResource.sendToDB(vm.json_output);
+            };
+
+            vm.getFromDB = function getFromDB() {
+                console.log('get from db');
             };
         }
 })();
