@@ -6,4 +6,6 @@ var jsonSchema	= new Schema({
 	teachers: Array
 });
 
-module.exports = mongoose.model('Entry', jsonSchema);
+var Entry = mongoose.model('Entry', jsonSchema);
+
+module.exports = Entry;

@@ -4,7 +4,7 @@
         .module('FusionApp')
         .controller('TeacherCtrl', TeacherCtrl);
 
-        function TeacherCtrl ($scope, $log, $location, TeacherResource) {
+        function TeacherCtrl ($scope, $log, $location, TeacherResource, UUIDResource) {
             var vm = this;
             var teachers = TeacherResource.getJSON();
             var teacherID = $location.search().uuid;
@@ -17,7 +17,8 @@
             vm.addCourse = function addCourse(i) {
                 var courseName = $scope.teacher.classes[i].teaching_courses.name;
                 $scope.teacher.classes[i].teaching_courses.push({
-                    "name": courseName
+                    "uuid" : UUIDResource.uuid(),
+                    "name" : courseName
                 });
             };
 
@@ -30,6 +31,7 @@
             vm.addStudent = function addStudent(i) {
                 var studentName = $scope.teacher.classes[i].students.name;
                 $scope.teacher.classes[i].students.push({
+                    "uuid" : UUIDResource.uuid(),
                     "name" : studentName
                 });
             };

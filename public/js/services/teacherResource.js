@@ -2,33 +2,33 @@
     'use strict';
     angular
         .module('FusionApp')
-        .factory('TeacherResource', function TeacherResourceFactory() {
+        .factory('TeacherResource', function TeacherResourceFactory(UUIDResource) {
             var default_json_data = [
                 {
                     name: 'Berry, Bunsen',
-                    uuid: '2b043f65-7aec-43b2-bec7-8b47743eb321',
+                    uuid: UUIDResource.uuid(),
                     type: 'teacher',
                     classes: [
                         {
                             name: 'Advanced Mathematics',
-                            uuid: 'eab09941-29b5-49dd-9cb3-4ba157b5c17e',
+                            uuid: UUIDResource.uuid(),
                             teaching_courses: [
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Course 1'
                                 },
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Course 2'
                                 }
                             ],
                             students: [
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Bobby Thomas'
                                 },
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Brittany Shoemaker'
                                 }
                             ]
@@ -37,45 +37,45 @@
                 },
                 {
                     name: 'Janice, Thompson',
-                    uuid: 'e3e66934-2cba-48dd-a973-6273900eeb5e',
+                    uuid: UUIDResource.uuid(),
                     type: 'teacher',
                     classes: [
                         {
                             name: 'Advanced Physics',
-                            uuid: '45477bfd-cabc-47ea-b090-c3449da1e331',
+                            uuid: UUIDResource.uuid(),
                             teaching_courses: [
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Course 3'
                                 },
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Course 4'
                                 },
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Course 5'
                                 },
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Course 6'
                                 }
                             ],
                             students: [
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Bobby Thomas'
                                 },
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Brittany Shoemaker'
                                 },
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Tommy Pickles'
                                 },
                                 {
-                                    uuid: 'gen',
+                                    uuid: UUIDResource.uuid(),
                                     name: 'Chuckie Fenster'
                                 }
                             ]

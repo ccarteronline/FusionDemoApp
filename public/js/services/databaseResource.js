@@ -28,7 +28,25 @@
             }
 
             function getFromDB() {
-                console.log('Get: ');
+                var defer = $q.defer();
+                $http({
+                    method: 'GET',
+                    url: '/api/findEntries'
+                })
+                .success(function (data, status, headers, config) {
+                    console.log(status);
+                    console.log(headers);
+                    console.log(config);
+                    defer.resolve(data);
+                })
+                .error(function (data, status, headers, config) {
+                    console.log(status);
+                    console.log(headers);
+                    console.log(config);
+                    defer.reject(data);
+                });
+
+                return defer.promise;
             }
 
             return {

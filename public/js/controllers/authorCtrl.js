@@ -4,7 +4,7 @@
         .module('FusionApp')
         .controller('AuthorCtrl', AuthorCtrl);
 
-        function AuthorCtrl ($scope, $log, $location, AuthorResource) {
+        function AuthorCtrl ($scope, $log, $location, AuthorResource, UUIDResource) {
             var vm = this;
             var authors = AuthorResource.getJSON();
             var authorID = $location.search().uuid;
@@ -26,6 +26,7 @@
                     alert('You cannot enter a blank class');
                 } else {
                     $scope.author.courses.push({
+                        "uuid" : UUIDResource.uuid(),
                         "name" : $scope.newCourseName,
                         "year" : $scope.newCourseYear
                     });

@@ -2,55 +2,55 @@
     'use strict';
     angular
         .module('FusionApp')
-        .factory('AuthorResource', function AuthorResourceFactory() {
+        .factory('AuthorResource', function AuthorResourceFactory(UUIDResource) {
             var default_json_data = [
                 {
                     name: 'John Doe',
-                    uuid: '356520ce-57bd-450b-8d5e-34972f7715cf',
+                    uuid: UUIDResource.uuid(),
                     type: 'author',
                     courses: [
                         {
                             name: "Alebra 101",
-                            uuid: 'gen',
+                            uuid: UUIDResource.uuid(),
                             year: "2004"
                         },
                         {
                             name: "Earth Sciences",
-                            uuid: 'gen',
+                            uuid: UUIDResource.uuid(),
                             year: "2010"
                         }
                     ]
                 },
                 {
                     name: 'Elizabeth Jones',
-                    uuid: '0b65e1ec-a6da-4103-9271-25428428daba',
+                    uuid: UUIDResource.uuid(),
                     type: 'author',
                     courses: [
                         {
                             name: "Calculous",
-                            uuid: 'gen',
+                            uuid: UUIDResource.uuid(),
                             year: "2005"
                         },
                         {
                             name: "American History",
-                            uuid: 'gen',
+                            uuid: UUIDResource.uuid(),
                             year: "2007"
                         },
                         {
                             name: "World History",
-                            uuid: 'gen',
+                            uuid: UUIDResource.uuid(),
                             year: "2010"
                         }
                     ]
                 },
                 {
                     name: 'Michael McNelson',
-                    uuid: '4a98dac1-1629-4c5a-b566-12ce3533ac5e',
+                    uuid: UUIDResource.uuid(),
                     type: 'author',
                     courses: [
                         {
                             name: "Calculous",
-                            uuid: 'gen',
+                            uuid: UUIDResource.uuid(),
                             year: "2005"
                         }
                     ]

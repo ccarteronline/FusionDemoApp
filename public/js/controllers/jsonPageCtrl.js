@@ -4,12 +4,24 @@
         .module('FusionApp')
         .controller('JsonPageCtrl', JsonPageCtrl);
 
-        function JsonPageCtrl ($scope, $mdDialog, $log, $location, TeacherResource, AuthorResource, DatabaseResource) {
+        function JsonPageCtrl (
+                $scope,
+                $mdDialog,
+                $log,
+                $location,
+                TeacherResource,
+                AuthorResource,
+                DatabaseResource,
+                UUIDResource) {
+
             var vm = this;
             var preparedJsonOutput = {
+                "uuid": UUIDResource.uuid(),
                 "authors": AuthorResource.getJSON(),
                 "teachers": TeacherResource.getJSON()
             };
+
+            console.log(UUIDResource.uuid());
             vm.json_output = angular.toJson(preparedJsonOutput, true);
             vm.replaceJsonData = function replaceJsonData(ev) {
                 vm.newJson = JSON.parse(vm.json_output);
@@ -34,7 +46,13 @@
             };
 
             vm.getFromDB = function getFromDB() {
-                console.log('get from db');
+                DatabaseResource.getFromDB()
+                    .then(function (data) {
+                        console.log('get Data: ', data);
+                    })
+                    .catch(function (data) {
+                        console.log('get Data: ', data);
+                    });
             };
         }
 })();

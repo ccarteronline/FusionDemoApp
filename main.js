@@ -7,8 +7,8 @@ var http = require('http').Server(app);
 var router = express.Router();
 var port = (process.env.PORT || 7803);
 var dbUrl = 'mongodb://localhost:27017/fusion';
-var JsonModel = require('./server/models/jsonModel');
-var Entry = new JsonModel();
+var Entry = require('./server/models/jsonModel');
+var entryToSave = new Entry();
 
 mongoose.connect(dbUrl);
 
@@ -31,13 +31,14 @@ router.post('/sendToDB', function (req, res) {
             message: 'You must provide a valid JSON structure'
         });
     } else {
-        Entry.authors = data.authors;
-        Entry.teachers = data.teachers;
-        Entry.save(function (err) {
+        // Add a new entry
+        entryToSave.authors = data.authors;
+        entryToSave.teachers = data.teachers;
+        entryToSave.save(function (err) {
             if (err) {
+                console.log(err);
                 res.status(500).send(err);
             } else {
-                console.log('Added an entry');
                 res.json({ message: 'Successfully added json entry to DB' });
             }
         });
@@ -45,8 +46,7 @@ router.post('/sendToDB', function (req, res) {
 });
 
 router.get('/findEntries', function (req, res) {
-
-    mongoose.model('Entry').find({}, function (err, data) {
+    Entry.find(function (err, data) {
         if (err) {
             res.status(500).send(err);
         } else {
@@ -54,15 +54,6 @@ router.get('/findEntries', function (req, res) {
         }
     });
 });
-
-router.delete('/dropDatabase', function (req, res) {
-	mongoose.connect(dbUrl, function (){
-		//Drop the DB
-		mongoose.connection.db.dropDatabase();
-		res.json({ message: 'DBs were dropped' });
-	});
-});
-
 
 http.listen(port, function(){
     console.log('listening on: ' + port);
