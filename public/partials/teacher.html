@@ -1,5 +1,5 @@
 <div class="TeacherContent" ng-controller="TeacherCtrl as vm">
-    <md-toolbar class="md-warn">
+    <md-toolbar class="md-accent">
         <div class="md-toolbar-tools">
             <h2 class="md-flex">Teacher</h2>
         </div>
@@ -10,7 +10,7 @@
             <input type="text" name="name" value="Name" ng-model="teacher.name">
         </md-input-container>
     </md-content>
-    <md-toolbar class="md-warn">
+    <md-toolbar class="md-accent">
         <div class="md-toolbar-tools">
             <h2 class="md-flex">Edit Classes and Courses</h2>
         </div>
@@ -89,7 +89,7 @@
 
                 <md-button
                     aria-label="Delete"
-                    class="md-warn md-raised"
+                    class="md-accent md-raised"
                     ng-click="vm.removeClass($index)">
                         Delete Class and courses
                 </md-button>

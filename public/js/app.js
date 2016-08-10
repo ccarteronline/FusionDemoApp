@@ -5,7 +5,7 @@
         .run(function ($log) {
             $log.debug('Fusion Demo App is running');
         })
-        .config(function ($routeProvider, $locationProvider) {
+        .config(function ($routeProvider, $locationProvider, $mdThemingProvider) {
             $routeProvider
                 .when('/', {
                     templateUrl: '/partials/main.html'
@@ -20,7 +20,13 @@
                     templateUrl: '/partials/json.html'
                 });
 
+                // Allow pretty urls without # (hash)
                 $locationProvider.html5Mode(true);
+
+                $mdThemingProvider.theme('default')
+                    .primaryPalette('green')
+                    .accentPalette('lime');
+                    //.dark();
         });
 
 }());

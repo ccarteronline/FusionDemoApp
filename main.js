@@ -32,6 +32,7 @@ router.post('/sendToDB', function (req, res) {
         });
     } else {
         // Add a new entry
+        entryToSave.uuid = data.uuid;
         entryToSave.authors = data.authors;
         entryToSave.teachers = data.teachers;
         entryToSave.save(function (err) {
@@ -46,15 +47,27 @@ router.post('/sendToDB', function (req, res) {
 });
 
 router.get('/findEntries', function (req, res) {
-    Entry.find(function (err, data) {
+    Entry.findOne({ "uuid": req.headers.uuid}, function (err, data) {
         if (err) {
             res.status(500).send(err);
+        } else if (data === null) {
+            res.status(400).send({
+                error: 'Cannot find a JSON structure with that UUID number'
+            });
         } else {
             res.json(data);
         }
     });
 });
 
+router.delete('/remove', function (req, res) {
+	mongoose.connect(dbUrl, function (){
+		//Drop the DB
+		mongoose.connection.db.dropDatabase();
+		res.json({ message: 'Everything has been reset.' });
+	});
+});
+
 http.listen(port, function(){
-    console.log('listening on: ' + port);
+    console.log('App is running on port:  ' + port);
 });

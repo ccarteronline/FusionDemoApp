@@ -2,6 +2,7 @@ var mongoose	= require('mongoose');
 var Schema		= mongoose.Schema;
 
 var jsonSchema	= new Schema({
+    uuid: String,
 	authors: Array,
 	teachers: Array
 });

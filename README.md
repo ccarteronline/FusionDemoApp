@@ -1,8 +1,9 @@
 # Fusion Demo App
 
-Fusion Demo App is an app that displays courses, teachers and classes much like a ToDo application. It uses Angular Material and the MEAN stack.
+Show objects populated through the view. Edit the objects and add new objects. Updates happen dynamically. Send objects to a MongoDB instance. Retrieve objects from MongoDB using a UUID number.
 
 ### Installation
+You must have MongoDB installed in order for SQLess database functionality to work
 
 ```sh
 $ npm install
@@ -16,19 +17,13 @@ $ bower install
 ```sh
 $ gulp server
 ```
+This runs jshint upon refresh
 
 ### Testing
-There is a linter for JS syntax. Soon to be adjusted.
-```sh
-$ gulp hint
-```
-or
-```sh
-$ gulp watch
-```
+Soon to have unit tests.
 
 ### Changes
 
-  - Add items to JSON structure from the view
-  - Remove items from JSON structure from the view
-  - Add Material Design styles to input
+  - Add JSON structure to MongoDB instance
+  - Retrieve JSON structure from MongoDB instance using the uuid number
+  - Change theme colors
