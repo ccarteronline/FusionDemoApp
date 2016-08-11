@@ -10,7 +10,6 @@ module.exports = function(config) {
             'bower_components/angular-messages/angular-messages.min.js',
             'bower_components/lodash/dist/lodash.js',
             'bower_components/angular-material/angular-material.min.js',
-            'public/js/app.js',
             'public/js/**/*.js'
         ],
 

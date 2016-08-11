@@ -7,7 +7,7 @@
     <md-content flex layout-padding>
         <md-input-container class="md-block">
             <label>Author's Name</label>
-            <input type="text" name="name" value="Name" ng-model="author.name">
+            <input type="text" name="name" value="Name" ng-model="vm.author.name">
         </md-input-container>
     </md-content>
     <md-toolbar class="md-accent">
@@ -17,7 +17,7 @@
     </md-toolbar>
     <md-content layout-padding>
         <ul class="list" layout="column" layout-padding layout-fill>
-            <li ng-repeat="course in author.courses">
+            <li ng-repeat="course in vm.author.courses">
                 <md-input-container layout-fill>
                     <label>Edit Course Name</label>
                     <input type="text" name="name" ng-model="course.name">

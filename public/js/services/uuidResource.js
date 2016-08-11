@@ -1,3 +1,4 @@
+/*jshint bitwise: false*/
 (function () {
     'use strict';
     angular

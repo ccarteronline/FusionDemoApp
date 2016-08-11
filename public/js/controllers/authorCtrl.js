@@ -6,16 +6,16 @@
 
         function AuthorCtrl ($scope, $log, $location, AuthorResource, UUIDResource) {
             var vm = this;
-            var authors = AuthorResource.getJSON();
-            var authorID = $location.search().uuid;
-            var authorIndex = _.findIndex(authors, function (o) {
-                return o.uuid === authorID;
+            vm.authors = AuthorResource.getJSON();
+            vm.authorID = $location.search().uuid;
+            vm.authorIndex = _.findIndex(vm.authors, function (o) {
+                return o.uuid === vm.authorID;
             });
 
-            $scope.author = authors[authorIndex];
+            vm.author = vm.authors[vm.authorIndex];
 
             vm.removeCourse = function removeCourse(i) {
-                $scope.author.courses.splice(i, 1);
+                vm.author.courses.splice(i, 1);
             };
 
             vm.addCourse = function addCourse() {
@@ -25,7 +25,7 @@
                 if (!$scope.newCourseName || !$scope.newCourseYear) {
                     alert('You cannot enter a blank class');
                 } else {
-                    $scope.author.courses.push({
+                    vm.author.courses.push({
                         "uuid" : UUIDResource.uuid(),
                         "name" : $scope.newCourseName,
                         "year" : $scope.newCourseYear
