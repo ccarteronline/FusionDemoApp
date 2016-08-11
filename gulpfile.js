@@ -2,6 +2,7 @@ var gulp = require('gulp')
     , shell = require('gulp-shell')
     , plug = require('gulp-load-plugins')()
     , nodemon = require('gulp-nodemon')
+    , Karma = require('karma').Karma;
 
 var source = [
     'public/js/**/*.js'
@@ -23,6 +24,10 @@ gulp.task('hint', function () {
         .pipe(plug.jshint('./.jshintrc'))
         .pipe(plug.jshint.reporter('jshint-stylish'));
 });
+
+// gulp.task('test', shell.task([
+//     'karma start && python -mwebbrowser http://localhost:9876/'
+// ]));
 
 gulp.task('watch', function () {
     return gulp

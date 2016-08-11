@@ -20,10 +20,12 @@ $ gulp server
 This runs jshint upon refresh
 
 ### Testing
-Soon to have unit tests.
+```sh
+$ karma start
+```
 
 ### Changes
-
+  - Add unit testing with Karma
   - Add JSON structure to MongoDB instance
   - Retrieve JSON structure from MongoDB instance using the uuid number
   - Change theme colors

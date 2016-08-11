@@ -14,7 +14,7 @@
             vm.sideBarList = [];
 
             // When navigation button selected, handle what happens
-            vm.selectButton = function (btnName, isCollapsed) {
+            vm.navigateTo = function (btnName, isCollapsed) {
                 vm.sidebarTitle = btnName;
                 if (btnName === 'Authors') {
                     if (!isCollapsed) {

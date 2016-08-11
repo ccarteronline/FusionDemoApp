@@ -10,10 +10,10 @@
                     url: '/api/sendToDB',
                     data: data
                 })
-                .success(function (data, status, headers, config) {
+                .success(function (data) {
                     defer.resolve(data);
                 })
-                .error(function (data, status, headers, config) {
+                .error(function (data) {
                     defer.reject(data);
                 });
 
@@ -27,10 +27,10 @@
                     url: '/api/findEntries',
                     headers: data
                 })
-                .success(function (data, status, headers, config) {
+                .success(function (data) {
                     defer.resolve(data);
                 })
-                .error(function (data, status, headers, config) {
+                .error(function (data) {
                     defer.reject(data);
                 });
 
