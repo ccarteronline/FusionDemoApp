@@ -7,7 +7,7 @@
     <md-content flex layout-padding>
         <md-input-container class="md-block">
             <label>Teacher's Name</label>
-            <input type="text" name="name" value="Name" ng-model="teacher.name">
+            <input type="text" name="name" value="Name" ng-model="vm.teacher.name">
         </md-input-container>
     </md-content>
     <md-toolbar class="md-accent">
@@ -17,7 +17,7 @@
     </md-toolbar>
     <md-content flex layout-padding>
         <ul class="list" layout="column" layout-padding layout-fill>
-            <li ng-repeat="class in teacher.classes">
+            <li ng-repeat="class in vm.teacher.classes">
                 <md-input-container>
                     <label>Class Name</label>
                     <input type="text" name="name" ng-model="class.name">
@@ -44,7 +44,7 @@
                             <input
                                 type="text"
                                 name="name"
-                                ng-model="teacher.classes[$index].teaching_courses.name">
+                                ng-model="vm.teacher.classes[$index].teaching_courses.name">
                             <md-button
                                 aria-label="Add a Course"
                                 class="md-primary md-raised"
@@ -76,7 +76,7 @@
                             <input
                                 type="text"
                                 name="name"
-                                ng-model="teacher.classes[$index].students.name">
+                                ng-model="vm.teacher.classes[$index].students.name">
                             <md-button
                                 aria-label="Add a Student"
                                 class="md-primary md-raised"

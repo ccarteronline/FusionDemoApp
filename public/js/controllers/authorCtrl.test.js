@@ -23,16 +23,16 @@
             // Set the author as the first item in the array of authors.
             // This is the same as choosing a single author by uuid number.
             vm.author = authors[0];
+
+            // Set the original course length before removing it
+            originalCourseLength = vm.author.courses.length;
         }));
 
         it('should be able to remove a course', function () {
-            // Set the original course length before removing it
-            originalCourseLength = vm.author.courses.length;
-
             // Call the function that removes a specific course based on the $index
             vm.removeCourse(0);
 
-            expect(vm.author.courses.length).not.toEqual(originalCourseLength);
+            expect(vm.author.courses.length).toEqual(originalCourseLength - 1);
 
         });
 
@@ -42,13 +42,10 @@
             scope.newCourseName = 'Angular Unit Testing';
             scope.newCourseYear = '2016';
 
-            // Set the original course length before removing it
-            originalCourseLength = vm.author.courses.length;
-
             // Call the function the adds a new course based on new input fields
             vm.addCourse();
 
-            expect(vm.author.courses.length).not.toEqual(originalCourseLength);
+            expect(vm.author.courses.length).toEqual(originalCourseLength + 1);
         });
 
     });

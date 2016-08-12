@@ -6,17 +6,17 @@
 
         function TeacherCtrl ($scope, $log, $location, TeacherResource, UUIDResource) {
             var vm = this;
-            var teachers = TeacherResource.getJSON();
-            var teacherID = $location.search().uuid;
-            var teacherIndex = _.findIndex(teachers, function (o) {
-                return o.uuid === teacherID;
+            vm.teachers = TeacherResource.getJSON();
+            vm.teacherID = $location.search().uuid;
+            vm.teacherIndex = _.findIndex(vm.teachers, function (o) {
+                return o.uuid === vm.teacherID;
             });
-            $scope.teacher = teachers[teacherIndex];
+            vm.teacher = vm.teachers[vm.teacherIndex];
 
             // Add a single course to a teacher entry
             vm.addCourse = function addCourse(i) {
-                var courseName = $scope.teacher.classes[i].teaching_courses.name;
-                $scope.teacher.classes[i].teaching_courses.push({
+                var courseName = vm.teacher.classes[i].teaching_courses.name;
+                vm.teacher.classes[i].teaching_courses.push({
                     "uuid" : UUIDResource.uuid(),
                     "name" : courseName
                 });
@@ -24,13 +24,13 @@
 
             // Remove a single course from a teacher entry
             vm.removeCourse = function removeCourse(parentIndex, itemIndex) {
-                $scope.teacher.classes[parentIndex].teaching_courses.splice(itemIndex, 1);
+                vm.teacher.classes[parentIndex].teaching_courses.splice(itemIndex, 1);
             };
 
             // Add a student to a teacher entry
             vm.addStudent = function addStudent(i) {
-                var studentName = $scope.teacher.classes[i].students.name;
-                $scope.teacher.classes[i].students.push({
+                var studentName = vm.teacher.classes[i].students.name;
+                vm.teacher.classes[i].students.push({
                     "uuid" : UUIDResource.uuid(),
                     "name" : studentName
                 });
@@ -38,12 +38,12 @@
 
             // Remove a student from a teacher entry
             vm.removeStudent = function removeStudent(parentIndex, itemIndex) {
-                $scope.teacher.classes[parentIndex].students.splice(itemIndex, 1);
+                vm.teacher.classes[parentIndex].students.splice(itemIndex, 1);
             };
 
-            // Remove an entire teacher entry
+            // Remove all courses and classes for one teacher.
             vm.removeClass = function removeClass(i) {
-                $scope.teacher.classes.splice(i, 1);
+                vm.teacher.classes.splice(i, 1);
             };
 
         }
