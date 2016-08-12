@@ -54,7 +54,8 @@
             // The parent index is 0 as Janice Thompson only has one class in the array.
             // Pass in 2 which is the third course to be removed
             vm.removeCourse(0, 2);
-            expect(vm.teacher.classes[0].teaching_courses.length).toEqual(originalCourseLength - 1);
+            expect(vm.teacher.classes[0].teaching_courses.length)
+                .toEqual(originalCourseLength - 1);
         });
 
         it('should be able to add a new student', function () {
@@ -87,7 +88,7 @@
             // Remove the first class in a possible list of classes
             vm.removeClass(0);
 
-            // expect to have subtracted amount of classes 
+            // expect to have subtracted amount of classes
             expect(vm.teacher.classes.length).toEqual(originalClassLength - 1);
         });
 
