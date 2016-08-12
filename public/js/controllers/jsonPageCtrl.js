@@ -52,12 +52,10 @@
                     };
                     DatabaseResource.getFromDB(preparedUUID)
                         .then(function (data) {
-                            console.log(data);
                             vm.json_output = angular.toJson(data, true);
                             showDialog('Get from DB', 'Successfully retreived from DB', ev);
                         })
                         .catch(function (data) {
-                            console.log(data);
                             showDialog('Get from DB', data.error, ev);
                         });
                 }

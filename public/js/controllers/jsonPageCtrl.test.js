@@ -2,15 +2,45 @@
     'use strict';
     describe('Controller: JsonPageCtrl', function () {
 
-        var scope, vm, location, mockedJsonToSet;
+        var scope, vm, location, mockedJsonToSet, DatabaseResource;
 
         beforeEach(module('FusionApp'));
 
-        beforeEach(inject(function ($rootScope, $controller, $location) {
+        beforeEach(inject(function ($rootScope, $controller, $location, $q) {
             scope = $rootScope.$new();
             location = $location;
+            var defer = $q.defer();
+
+            // Mock out the DatabaseResource resource
+            DatabaseResource = {
+                sendToDB: function (json) {
+                    if (json) {
+                        defer.resolve({
+                            message: 'Successfully added json entry to DB'
+                        });
+                    } else if (!json || Object.keys(json).length === 0) {
+                        defer.reject({
+                            message: 'You must provide a valid JSON structure'
+                        });
+                    }
+                    return defer.promise;
+                },
+                getFromDB: function (uuid) {
+                    if (uuid.uuid) {
+                        defer.resolve({
+                            data: 'fake structure'
+                        });
+                    } else if (uuid.uuid === null) {
+                        defer.reject({
+                            error: 'Cannot find a JSON structure with that UUID number'
+                        });
+                    }
+                    return defer.promise;
+                }
+            };
             vm = $controller('JsonPageCtrl', {
-                $scope: scope
+                $scope: scope,
+                DatabaseResource: DatabaseResource
             });
 
             mockedJsonToSet = `{
@@ -72,16 +102,70 @@
             expect(vm.newJson.teachers[0].name).toEqual('Delilah Evans');
         });
 
-        it('should send the newly set data into the database', function () {
+        it('DatabaseResource sendToDB: success message', function () {
+            var successMessage;
             vm.json_output = mockedJsonToSet;
+
+            // Call the database resource
+            DatabaseResource.sendToDB(vm.json_output)
+                .then(function (data) {
+                    successMessage = data.message;
+                });
             vm.sendToDB();
-            // Use sinon or a mocked way to show that the resources have been called
+
+            // Use scope.$apply to send the resource through the digest cycle.
+            scope.$apply();
+            expect(successMessage).toEqual('Successfully added json entry to DB');
         });
 
-        it('should get the old set data from the database', function () {
+        it('DatabaseResource sendToDB: reject message', function () {
+            var errorMessage;
+            vm.json_output = mockedJsonToSet;
+
+            // Call the database resource
+            DatabaseResource.sendToDB()
+                .catch(function (data) {
+                    errorMessage = data.message;
+                });
+            vm.sendToDB();
+
+            // Use scope.$apply to send the resource through the digest cycle.
+            scope.$apply();
+            expect(errorMessage).toEqual('You must provide a valid JSON structure');
+        });
+
+        it('DatabaseResource getFromDB: success message', function () {
+            var successMessage;
+            // Define a mocked uuid number
             scope.uuid = '16ad4b46-a81a-43f9-bf60-9169ffc3a137';
+
+            // Call the database resource
+            DatabaseResource.getFromDB({ uuid:scope.uuid })
+                .then(function (data) {
+                    successMessage = data.data;
+                });
             vm.getFromDB();
-            // Use sinon or a mocked way to show that the resources have been called
+
+            scope.$apply();
+            expect(successMessage).toEqual('fake structure');
+
+        });
+
+        it('DatabaseResource getFromDB: reject message', function () {
+            var errorMessage;
+            // Define a mocked uuid number
+            scope.uuid = null;
+
+            // Call the database resource
+            DatabaseResource.getFromDB({ uuid: scope.uuid })
+                .catch(function (data) {
+                    errorMessage = data.error;
+                });
+            vm.getFromDB();
+
+            scope.$apply();
+            expect(errorMessage).toEqual('Cannot find a JSON structure with that UUID number');
+
         });
 
     });

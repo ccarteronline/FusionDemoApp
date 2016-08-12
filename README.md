@@ -17,12 +17,14 @@ $ bower install
 ```sh
 $ gulp server
 ```
-This runs jshint upon refresh
+This runs jshint when changes are made to specific files.
 
 ### Testing
+You must have karma installed on your machine.
 ```sh
-$ karma start
+$ karma start karma.conf.js
 ```
+The `coverage` directory will show files for the coverage reporter. Open up the `index.html` file within the web browser folder. I like to use live-server to have changes detected.
 
 ### Changes
   - Add unit testing with Karma
