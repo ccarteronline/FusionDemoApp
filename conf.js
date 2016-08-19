@@ -1,4 +1,18 @@
 exports.config = {
+
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['protractor/test/todo-spec.js']
+
+    specs: ['protractor/test/navigation.spec.js'],
+
+    jasmineNodeOpts: {
+        showColors: true,
+        print: function () {}
+    },
+
+    onPrepare: function() {
+        var SpecReporter = require('jasmine-spec-reporter');
+        // add jasmine spec reporter
+        jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
+    }
+
 };

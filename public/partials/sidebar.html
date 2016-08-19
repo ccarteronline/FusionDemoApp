@@ -1,0 +1,64 @@
+<!-- Side Bar content -->
+<div class="SideBar" layout="column" ng-controller="SideBarCtrl">
+    <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="false"
+        md-disable-backdrop
+        md-whiteframe-4dp>
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">{{vm.sidebarTitle}}</h1>
+      </md-toolbar>
+      <md-content layout-padding>
+        <!-- <md-button class="md-primary" hide-gt-md ng-click="vm.toggleSideMenu()">
+          Close Sidenav Left
+        </md-button> -->
+        <!-- <p hide show-gt-md>
+          This sidenav is locked open on your device. To go back to the default behavior,
+          narrow your display.
+        </p> -->
+        <div class="SideBarContent">
+            <div class="miniLinks">
+                <md-list-item ng-repeat="btn in vm.navigationButtons">
+                    <md-button
+                        class="md-primary md-raised"
+                        aria-label="SideBar Buttons"
+                        ng-click="vm.navigateTo(btn, true)"
+                        flex="auto">
+                            {{btn}}
+                    </md-button>
+                </md-list-item>
+            </div>
+
+            <md-content>
+                <md-list flex>
+                <md-subheader class="md-no-sticky">Showing: {{vm.sidebarTitle}}</md-subheader>
+                <md-list-item
+                    class="md-3-line"
+                    ng-click="showTab(item.type, item.uuid)"
+                    ng-repeat="item in vm.sideBarList">
+                        <img ng-src="img/icons/ic_person_24px.svg" class="md-avatar" alt="{{item.name}}" />
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{item.name}}</h3>
+                            <h4>{{item.type | uppercase}}</h4>
+                            <!--<p>something else</p> -->
+                        </div>
+                </md-list-item>
+                <span ng-show="!vm.sideBarList || vm.sideBarList.length === 0"><i>There are no items here.</i></span>
+            </md-content>
+        </div>
+        <md-list-item>
+            <md-button
+                class="md-primary md-raised"
+                aria-label="Close Sidebar"
+                ng-click="vm.toggleSideMenu()"
+                flex="auto">
+                    <!-- <img ng-src="img/icons/ic_close_24px.svg" alt="close" /> -->
+                    Close Sidebar
+            </md-button>
+        </md-list-item>
+
+      </md-content>
+    </md-sidenav>
+</div>
+<!-- End SideBar content -->

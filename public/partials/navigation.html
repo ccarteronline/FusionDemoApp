@@ -1,0 +1,25 @@
+<!-- Top Tool Bar -->
+<div class="NavigationBar">
+    <md-toolbar layout="row" layout-align="center end" class="md-sm">
+        <div class="md-toolbar-tools">
+            <span flex>
+                <a href="/#/">{{vm.appTitle}}</a>
+            </span>
+            <md-button
+                class="navButtons"
+                aria-label="Navigation Button"
+                ng-disabled="false"
+                ng-click="vm.navigateTo(btn, false)"
+                ng-repeat="btn in vm.navigationButtons">
+                    {{btn}}
+            </md-button>
+            <md-button
+                class="md-icon-button hamburgerButton"
+                aria-label="Side Bar"
+                ng-disabled="false"
+                ng-click="vm.toggleSideMenu()">
+                    <md-icon md-svg-icon="/img/icons/menu.svg"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+</div>

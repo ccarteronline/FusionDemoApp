@@ -25,6 +25,10 @@ gulp.task('hint', function () {
         .pipe(plug.jshint.reporter('jshint-stylish'));
 });
 
+gulp.task('e2e', shell.task([
+    'protractor conf.js'
+]));
+
 // gulp.task('test', shell.task([
 //     'karma start && python -mwebbrowser http://localhost:9876/'
 // ]));
