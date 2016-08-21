@@ -31,8 +31,10 @@
     "karma-spec-reporter": "0.0.26",
     "lodash": "^4.14.2",
     "mocha": "^3.0.2",
+    "protractor": "^4.0.3",
     "q": "^1.4.1",
-    "sinon": "^1.17.5"
+    "sinon": "^1.17.5",
+    "webdriver-manager": "^10.2.2"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
