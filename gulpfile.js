@@ -2,7 +2,7 @@ var gulp = require('gulp')
     , shell = require('gulp-shell')
     , plug = require('gulp-load-plugins')()
     , nodemon = require('gulp-nodemon')
-    , Karma = require('karma').Karma;
+    , Server = require('karma').Server;
 
 var source = [
     'public/js/**/*.js'
@@ -24,6 +24,13 @@ gulp.task('hint', function () {
         .pipe(plug.jshint('./.jshintrc'))
         .pipe(plug.jshint.reporter('jshint-stylish'));
 });
+
+gulp.task('unitTest', function (done) {
+    new Server({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done).start();
+})
 
 gulp.task('e2e', shell.task([
     'protractor conf.js'

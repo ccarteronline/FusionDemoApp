@@ -25,7 +25,8 @@ module.exports = function(config) {
             'karma-coverage',
             'karma-sinon',
             'karma-chai',
-            'karma-mocha'
+            'karma-mocha',
+            'karma-phantomjs-launcher'
         ],
 
         preprocessors: {
@@ -39,6 +40,12 @@ module.exports = function(config) {
         coverageReporter: {
             type : 'html',
             dir : 'coverage/'
+        },
+
+        browsers: ['PhantomJS'],
+        
+        phantomjsLauncher: {
+            exitOnResourceError: true
         }
     });
 };

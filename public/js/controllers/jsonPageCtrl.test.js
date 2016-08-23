@@ -43,48 +43,50 @@
                 DatabaseResource: DatabaseResource
             });
 
-            mockedJsonToSet = `{
-              "uuid": "16ad4b46-a81a-43f9-bf60-9169ffc3a137",
-              "authors": [
+            mockedJsonToSet = {
+              'uuid': '16ad4b46-a81a-43f9-bf60-9169ffc3a137',
+              'authors': [
                 {
-                  "name": "David Stevens",
-                  "uuid": "d0f98472-3e8f-42bb-62c8-21552ecf770c",
-                  "type": "author",
-                  "courses": [
+                  'name': 'David Stevens',
+                  'uuid': 'd0f98472-3e8f-42bb-62c8-21552ecf770c',
+                  'type': 'author',
+                  'courses': [
                     {
-                      "name": "New Course 101",
-                      "uuid": "d62f33d4-671a-45aa-6fd2-be522192d661",
-                      "year": "2011"
+                      'name': 'New Course 101',
+                      'uuid': 'd62f33d4-671a-45aa-6fd2-be522192d661',
+                      'year': '2011'
                     }
                   ]
                 }
               ],
-              "teachers": [
+              'teachers': [
                 {
-                  "name": "Delilah Evans",
-                  "uuid": "d1939042-85e7-4eb6-4579-0ace07183d6d",
-                  "type": "teacher",
-                  "classes": [
+                  'name': 'Delilah Evans',
+                  'uuid': 'd1939042-85e7-4eb6-4579-0ace07183d6d',
+                  'type': 'teacher',
+                  'classes': [
                     {
-                      "name": "Intro to Hierarchical Structures",
-                      "uuid": "e06fa581-9380-4dda-b409-4afc7c3b8253",
-                      "teaching_courses": [
+                      'name': 'Intro to Hierarchical Structures',
+                      'uuid': 'e06fa581-9380-4dda-b409-4afc7c3b8253',
+                      'teaching_courses': [
                         {
-                          "uuid": "eb287bdf-adae-4f7c-3e7b-8642db102d9e",
-                          "name": "Organizational Patterns"
+                          'uuid': 'eb287bdf-adae-4f7c-3e7b-8642db102d9e',
+                          'name': 'Organizational Patterns'
                         }
                       ],
-                      "students": [
+                      'students': [
                         {
-                          "uuid": "a9374789-fd1b-40b8-f1ed-167a24f90fc7",
-                          "name": "Understanding Fragmented Systems"
+                          'uuid': 'a9374789-fd1b-40b8-f1ed-167a24f90fc7',
+                          'name': 'Understanding Fragmented Systems'
                         }
                       ]
                     }
                   ]
                 }
               ]
-          }`;
+          };
+          
+          mockedJsonToSet = JSON.stringify(mockedJsonToSet);
         }));
 
         it('should output the json into the view', function () {
