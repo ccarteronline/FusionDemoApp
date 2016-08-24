@@ -2,7 +2,7 @@ exports.config = {
 
     seleniumAddress: 'http://localhost:4444/wd/hub',
 
-    specs: ['protractor/test/navigation.spec.js'],
+    specs: ['protractor/test/*.js'],
 
     jasmineNodeOpts: {
         showColors: true,

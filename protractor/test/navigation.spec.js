@@ -1,5 +1,7 @@
 (function() {
     'use strict';
+    var xtras = require('../page-objects/extras');
+    var nav = require('../page-objects/navigationSidebar');
 
     describe('Page Navigation: Navigation Bar elements', function() {
 
@@ -20,33 +22,31 @@
         });
 
         it('should have the navigation elements', function () {
-            // Create a page object out of this eventually.
-            // Why are there 6 items instead of the visual 3?
-            // Hamburger and other rogue ones
 
-            var mappedVals = element.all(by.repeater('btn in vm.navigationButtons')
-                .column('btn')).map(function (elm) {
-                    return elm.getText();
-            });
-            mappedVals.then(function (arr) {
+            xtras.arrayByRepeater('btn in vm.navigationButtons').then(function (arr) {
                 expect(navigationLinks).toEqual(arr);
             });
+
         });
 
         it('should open the sideBar for: Authors', function () {
+            var person = nav.itemInSideBar(0);
+            nav.openSideBar('AUTHORS', navigationLinks);
             // Could be extacted out as a page object
-            var btnLinkTitle = 'AUTHORS';
-            var index = navigationLinks.indexOf(btnLinkTitle);
-            var authorBtn = element.all(by.css('[ng-click="vm.navigateTo(btn, false)"]')).get(index);
-            var authorToClick = element.all(by.css('[ng-click="showTab(item.type, item.uuid)"]')).get(1);
+            // var btnLinkTitle = 'AUTHORS';
+            // var index = navigationLinks.indexOf(btnLinkTitle);
+            // var authorBtn = element.all(by.css('[ng-click="vm.navigateTo(btn, false)"]')).get(index);
+            // var authorToClick = element.all(by.css('[ng-click="showTab(item.type, item.uuid)"]')).get(1);
+            //
+            // // Open the Side bar
+            // authorBtn.click();
 
-            // Open the Side bar
-            authorBtn.click();
-
-            expect(authorToClick.getText()).toContain('Elizabeth Jones');
+            expect(person.getText()).toContain('Elizabeth Jones');
 
             // Click on the Author to go to their page
-            authorToClick.click();
+            //authorToClick.click();
+
+            //person.click();
         });
 
         it('should have visited an AUTHORS page', function () {
@@ -92,7 +92,7 @@
             logoText.click();
 
             browser.getCurrentUrl().then(function (url) {
-                expect(url).toContain('mainPageUrl');
+                expect(url).toContain(mainPageUrl);
             });
         });
 
