@@ -38,7 +38,9 @@ router.post('/sendToDB', function (req, res) {
         entryToSave.save(function (err) {
             if (err) {
                 console.log(err);
-                res.status(500).send(err);
+                res.status(500).send({
+                    message: err
+                });
             } else {
                 res.json({ message: 'Successfully added json entry to DB' });
             }
@@ -49,7 +51,9 @@ router.post('/sendToDB', function (req, res) {
 router.get('/findEntries', function (req, res) {
     Entry.findOne({ "uuid": req.headers.uuid}, function (err, data) {
         if (err) {
-            res.status(500).send(err);
+            res.status(500).send({
+                error: err
+            });
         } else if (data === null) {
             res.status(400).send({
                 error: 'Cannot find a JSON structure with that UUID number'
