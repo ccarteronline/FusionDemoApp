@@ -9,6 +9,7 @@
   "author": "Chris Carter",
   "license": "ISC",
   "devDependencies": {
+    "astrolabe": "^0.3.6",
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-jshint": "^2.0.1",

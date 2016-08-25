@@ -2,14 +2,12 @@
     'use strict';
 
     describe('Page Navigation: Navigation Bar elements', function() {
-
+        var extras = require('../page-objects/extras');
+        var navSidebar = require('../page-objects/navSidebar');
         var navigationLinks = ['AUTHORS', 'TEACHERS', 'JSON', '', '', ''];
         var mainPageUrl = 'http://localhost:7803/';
 
         it('should navigate to the homepage', function() {
-            // Set the page URL
-
-
             // Visit the Page
             browser.get(mainPageUrl);
 
@@ -20,28 +18,18 @@
         });
 
         it('should have the navigation elements', function () {
-            // Create a page object out of this eventually.
-            // Why are there 6 items instead of the visual 3?
-            // Hamburger and other rogue ones
-
-            var mappedVals = element.all(by.repeater('btn in vm.navigationButtons')
-                .column('btn')).map(function (elm) {
-                    return elm.getText();
-            });
-            mappedVals.then(function (arr) {
-                expect(navigationLinks).toEqual(arr);
+            extras.arrayByRepeater('btn in vm.navigationButtons')
+                .then(function (arr) {
+                    expect(navigationLinks).toEqual(arr);
             });
         });
 
         it('should open the sideBar for: Authors', function () {
-            // Could be extacted out as a page object
-            var btnLinkTitle = 'AUTHORS';
-            var index = navigationLinks.indexOf(btnLinkTitle);
-            var authorBtn = element.all(by.css('[ng-click="vm.navigateTo(btn, false)"]')).get(index);
-            var authorToClick = element.all(by.css('[ng-click="showTab(item.type, item.uuid)"]')).get(1);
+            // Set an item in the sidebar to click
+            var authorToClick = navSidebar.itemInSidebar(1);
 
-            // Open the Side bar
-            authorBtn.click();
+            // Open the sidebar for AUTHORS
+            navSidebar.openSideBarAt(navigationLinks.indexOf('AUTHORS'));
 
             expect(authorToClick.getText()).toContain('Elizabeth Jones');
 
@@ -56,15 +44,15 @@
         });
 
         it('should open the sideBar for: Teachers', function () {
-            var btnLinkTitle = 'TEACHERS';
-            var index = navigationLinks.indexOf(btnLinkTitle);
-            var teacherBtn = element.all(by.css('[ng-click="vm.navigateTo(btn, false)"]')).get(index);
-            var teacherToClick = element.all(by.css('[ng-click="showTab(item.type, item.uuid)"]')).get(1);
+            // Set an item in the sidebar to click
+            var teacherToClick = navSidebar.itemInSidebar(1);
 
-            teacherBtn.click();
+            // Open the sidebar for TEACHERS
+            navSidebar.openSideBarAt(navigationLinks.indexOf('TEACHERS'));
 
             expect(teacherToClick.getText()).toContain('Janice, Thompson');
 
+            // Click on the Teacher to go to their page
             teacherToClick.click();
         });
 
@@ -75,11 +63,8 @@
         });
 
         it('should have visited the JSON page', function () {
-            var btnLinkTitle = 'JSON';
-            var index = navigationLinks.indexOf(btnLinkTitle);
-            var jsonBtn = element.all(by.css('[ng-click="vm.navigateTo(btn, false)"]')).get(index);
-
-            jsonBtn.click();
+            // Go to the JSON page
+            navSidebar.openSideBarAt(navigationLinks.indexOf('JSON'));
 
             browser.getCurrentUrl().then(function (url) {
                 expect(url).toContain('/json');
@@ -92,7 +77,7 @@
             logoText.click();
 
             browser.getCurrentUrl().then(function (url) {
-                expect(url).toContain('mainPageUrl');
+                expect(url).toContain(mainPageUrl);
             });
         });
 

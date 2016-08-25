@@ -36,10 +36,6 @@ gulp.task('e2e', shell.task([
     'protractor conf.js'
 ]));
 
-// gulp.task('test', shell.task([
-//     'karma start && python -mwebbrowser http://localhost:9876/'
-// ]));
-
 gulp.task('watch', function () {
     return gulp
         .watch(source, ['hint'])
