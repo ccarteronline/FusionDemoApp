@@ -40,25 +40,69 @@
 
             expect(authorToClick.getText()).toContain(name);
 
+            authorToClick.click();
+
         });
 
-        // it('should be able to remove courses', function () {
-        //     var btn = $('.md-primary')[1];
-        //     btn.click();
-        //     browser.pause();
-        //     // var course = navSidebar.authorCourse(0);
-        //     // course.then(function (data) {
-        //     //     console.log(data);
-        //     //     data.click();
-        //     // });
-        //     // var courses = extras.arrayByRepeater('course in vm.author.courses').then(function (data) {
-        //     //     return data;
-        //     // });
-        //
-        //     //console.log(courses);
-        //
-        // });
+        it('should be able to remove courses', function () {
+            for (var i = 0; i <= 2; i++) {
+                navSidebar.authorCourseDeleteBtn(0).click();
+            };
 
+            element.all(by.repeater('course in vm.author.courses')).then(function(btns) {
+                console.log(btns.length);
+                expect(btns.length).toEqual(0);
+                // var btnElement = btns[0].element(by.className('md-button'));
+                // expect(btnElement.getText()).toEqual('DELETE COURSE');
+                // btnElement.click();
+                // console.log(btns.length);
+
+                //browser.pause();
+            });
+
+        });
+
+        it('should be able to add courses', function () {
+            var mockCourses = [
+                {
+                    name: 'Midichlorians',
+                    year: '2017'
+                },
+                {
+                    name: 'Lightsabers',
+                    year: '2017'
+                },
+                {
+                    name: 'Interactive Force Exercises',
+                    year: '2017'
+                },
+                {
+                    name: 'Darkside Defense Tactics',
+                    year: '2017'
+                },
+                {
+                    name: 'Planetary History',
+                    year: '2357'
+                }
+            ];
+            var courseNameInput = element(by.model('newCourseName'));
+            var courseYearInput = element(by.model('newCourseYear'));
+            var courseAddBtn = element(by.cssContainingText('.md-button', 'Add This Course'));
+
+            for (var c = 0; c<= mockCourses.length-1; c++) {
+                courseNameInput.clear();
+                courseYearInput.clear();
+                courseNameInput.sendKeys(mockCourses[c].name);
+                courseYearInput.sendKeys(mockCourses[c].year);
+                courseAddBtn.click();
+            }
+
+            element.all(by.repeater('course in vm.author.courses')).then(function(btns) {
+                expect(btns.length).toEqual(mockCourses.length);
+
+            });
+
+        });
 
     });
 

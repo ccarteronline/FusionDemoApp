@@ -5,7 +5,8 @@ var gulp = require('gulp')
     , Server = require('karma').Server;
 
 var source = [
-    'public/js/**/*.js'
+    'public/js/**/*.js',
+    'protractor/**/*.js'
 ];
 
 gulp.task('server', function () {
