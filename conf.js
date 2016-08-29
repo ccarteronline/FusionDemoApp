@@ -9,6 +9,12 @@ exports.config = {
         print: function () {}
     },
 
+    params : {
+        tester: {
+            name: 'Obiwan Kenobi'
+        }
+    },
+
     onPrepare: function() {
         var SpecReporter = require('jasmine-spec-reporter');
         // add jasmine spec reporter

@@ -31,14 +31,13 @@
         });
 
         it('should be able to change the author name', function () {
-            var name = 'Obiwan Kenobi';
             var authorsName = element(by.model('vm.author.name'));
             authorsName.clear();
-            authorsName.sendKeys(name);
+            authorsName.sendKeys(browser.params.tester.name);
 
             navSidebar.openSideBarAt(authorsBtn);
 
-            expect(authorToClick.getText()).toContain(name);
+            expect(authorToClick.getText()).toContain(browser.params.tester.name);
 
             authorToClick.click();
 
@@ -50,7 +49,6 @@
             };
 
             element.all(by.repeater('course in vm.author.courses')).then(function(btns) {
-                console.log(btns.length);
                 expect(btns.length).toEqual(0);
                 // var btnElement = btns[0].element(by.className('md-button'));
                 // expect(btnElement.getText()).toEqual('DELETE COURSE');
@@ -99,7 +97,6 @@
 
             element.all(by.repeater('course in vm.author.courses')).then(function(btns) {
                 expect(btns.length).toEqual(mockCourses.length);
-
             });
 
         });

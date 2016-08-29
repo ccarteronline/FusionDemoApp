@@ -22,6 +22,11 @@
             value: function (i) {
                 return element.all(by.css('[ng-click="vm.removeCourse($index)"]')).get(i);
             }
+        },
+        teacherCourseDeleteBtn: {
+            value: function (i) {
+                return element.all(by.css('[ng-click="vm.removeCourse($parent.$index, $index)"]'));
+            }
         }
     });
 }());
