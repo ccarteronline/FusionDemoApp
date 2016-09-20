@@ -23,6 +23,11 @@ This runs jshint when changes are made to specific files. The application is run
 ```sh
 $ gulp unitTest
 ```
+or
+```sh
+karma start
+```
+
 The `coverage` directory will show files for the coverage reporter. Open up the `index.html` file within the web browser folder. I like to use live-server to have changes detected.
 
 ### Protractor Tests (E2E)

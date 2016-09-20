@@ -10,7 +10,8 @@ module.exports = function(config) {
             'bower_components/angular-messages/angular-messages.min.js',
             'bower_components/lodash/dist/lodash.js',
             'bower_components/angular-material/angular-material.min.js',
-            'public/js/**/*.js'
+            'public/js/**/*.js',
+            'test/*.js'
         ],
 
         frameworks: ['jasmine', 'sinon', 'chai', 'mocha'],
@@ -43,7 +44,7 @@ module.exports = function(config) {
         },
 
         browsers: ['PhantomJS'],
-        
+
         phantomjsLauncher: {
             exitOnResourceError: true
         }
